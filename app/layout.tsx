@@ -22,7 +22,7 @@ export default function RootLayout({
           id="ftd"
           src="https://payment.ipospays.com/ftd/v1/freedomtodesign.js"
           // @ts-ignore
-          security_key={process.env.DEJAVOO_KEY}
+          security_key={process.env.NEXT_PUBLIC_DEJAVOO_KEY}
         ></Script>
       </head>
       <body className={inter.className}>{children}</body>

@@ -21,7 +21,7 @@ export async function POST(request: Request) {
 
   const dejavoo_data: object = {
     merchantAuthentication: {
-      merchantId: process.env.DEJAVOO_TPN,
+      merchantId: process.env.NEXT_PUBLIC_DEJAVOO_TPN,
       transactionReferenceId: uniqueId,
     },
     transactionRequest: {
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        token: `${process.env.DEJAVOO_KEY}`,
+        token: `${process.env.NEXT_PUBLIC_DEJAVOO_KEY}`,
       },
       body: JSON.stringify(dejavoo_data),
     }

@@ -75,7 +75,7 @@ const PaymentForm = () => {
         }
       })
       .then(() => {
-        router.push("/checkout/thankyou");
+        router.push("/dr-hoppe/thankyou");
       })
       .catch((error) => {
         setErrorMessage(error.message);
