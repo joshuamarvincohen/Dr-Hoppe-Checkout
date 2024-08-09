@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   const data = await request.json();
 
   // Helper function to format phone number
-  const formatPhoneNumber = (phoneNumber) => {
+  const formatPhoneNumber = (phoneNumber: string) => {
     // Remove all non-numeric characters
     const numericPhone = phoneNumber.replace(/\D/g, "");
     // Ensure it starts with +1
