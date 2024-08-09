@@ -4,7 +4,6 @@ import CardWrapper from "./card-wrapper";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,19 +14,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import { z } from "zod";
-import { useFormStatus } from "react-dom";
+
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
-import { resolve } from "path";
-import { useRouter } from "next/navigation";
-import { MyAlertDialog } from "/my-alert-dialog";
 
+import { useRouter } from "next/navigation";
 
 const PaymentForm = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
-
 
   const form = useForm({
     resolver: zodResolver(CheckoutSchema),
@@ -45,7 +41,7 @@ const PaymentForm = () => {
       paymentTokenId: "",
     },
   });
-
+  //@ts-ignore
   const stripSensitiveData = (data) => {
     const { ccnumber, ccexpiry, cccvv, ...strippedData } = data;
     return strippedData;
@@ -56,7 +52,7 @@ const PaymentForm = () => {
   const onSubmit = async (mydata: z.infer<typeof CheckoutSchema>) => {
     setLoading(true);
     setErrorMessage("");
-    //tsignore
+    // @ts-ignore
     const data_response = await postData();
     const dataToSend = stripSensitiveData(mydata);
 
