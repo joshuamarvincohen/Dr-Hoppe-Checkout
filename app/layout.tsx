@@ -21,6 +21,7 @@ export default function RootLayout({
         <Script
           id="ftd"
           src="https://payment.ipospays.com/ftd/v1/freedomtodesign.js"
+          // @ts-ignore
           security_key={process.env.DEJAVOO_KEY}
         ></Script>
       </head>
