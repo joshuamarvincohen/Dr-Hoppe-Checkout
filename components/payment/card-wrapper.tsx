@@ -7,7 +7,6 @@ import PaymentCardHeader from "./payment-card-header";
 interface CardWrapperProps {
   label: string;
   title: string;
-  backButton: string;
   backButtonHref: string;
   backButtonLabel: string;
   children: React.ReactNode;
