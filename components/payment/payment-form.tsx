@@ -90,7 +90,7 @@ const PaymentForm = () => {
       label="Complete your purchase"
       title="Checkout"
       backButtonLabel="Powered by Das Payments"
-      backButtonHref="https://daspayusa.com"
+      backButtonHref="https://dasconsultantsusa.com/"
     >
       <div>
         <Form {...form}>

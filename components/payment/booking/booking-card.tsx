@@ -24,7 +24,7 @@ const BookingCard = () => {
       label="Please select an option"
       title="Schedule your first appointment"
       backButtonLabel="Powered by Das Payments"
-      backButtonHref="https://daspayusa.com"
+      backButtonHref="https://dasconsultantsusa.com/"
     >
       <div className="flex items-center justify-center p-8">
         <Button
