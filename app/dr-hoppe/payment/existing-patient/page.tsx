@@ -7,7 +7,7 @@ const PaymentPage = () => {
       <div>
         <div className="grid col-span-1 max-w-lg max-h-full">
           <h1 className="col-span-1 text-2xl p-4 font-bold text-center max-h-full">
-            New Patient Consultation - 45 min.
+            Existing Patient Appointment - 20 min.
           </h1>
           <p className="col-span-1 text-center p-4 max-h-full">
             Following your purchase, you will be provided with two
@@ -28,7 +28,7 @@ const PaymentPage = () => {
         </div>
       </div>
       <div className="w-full min-w-md max-w-lg col-span-1 p-4">
-        <PaymentForm amount={36000}/>
+        <PaymentForm amount={18000}/>
       </div>
     </div>
   );

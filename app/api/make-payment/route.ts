@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     },
     transactionRequest: {
       transactionType: 1,
-      amount: 36000,
+      amount: data.amount,
       cardToken: "",
       paymentTokenId: data.data_response.payment_token_id,
       applySteamSettingTipFeeTax: false,

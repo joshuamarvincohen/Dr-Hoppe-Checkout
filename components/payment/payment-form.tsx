@@ -20,7 +20,11 @@ import { Loader2 } from "lucide-react";
 
 import { useRouter } from "next/navigation";
 
-const PaymentForm = () => {
+interface PaymentFormProps {
+  amount: number;
+}
+
+const PaymentForm = ({ amount }: PaymentFormProps) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
@@ -59,7 +63,7 @@ const PaymentForm = () => {
     fetch("/api/make-payment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mydata: dataToSend, data_response }),
+      body: JSON.stringify({ mydata: dataToSend, data_response, amount }),
     })
       .then((res) => {
         console.log("Response from gateway", res);
@@ -90,7 +94,7 @@ const PaymentForm = () => {
       label="Complete your purchase"
       title="Checkout"
       backButtonLabel="Powered by Das Payments"
-      backButtonHref="https://dasconsultantsusa.com/"
+      backButtonHref="https://daspayusa.com/"
     >
       <div>
         <Form {...form}>
@@ -261,7 +265,7 @@ const PaymentForm = () => {
                   </Button>
                 </span>
               ) : (
-                "Purchase for $360"
+                `Purchase for $${(amount / 100).toString()}`
               )}
             </Button>
           </form>
