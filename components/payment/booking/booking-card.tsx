@@ -1,73 +1,42 @@
-import React, { useState } from "react";
-
-import Link from "next/link";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import CardWrapper from "../card-wrapper";
-import { Loader2 } from "lucide-react";
 
-const BookingCard = () => {
-  const [loadingState, setLoadingState] = useState({
-    button1: false,
-    button2: false,
-  });
+interface BookingCardProps {
+  isExistingPatient: boolean;
+}
 
-  const handleClick = (buttonKey: "button1" | "button2", url: string) => {
-    setLoadingState((prevState) => ({ ...prevState, [buttonKey]: true }));
-    // Simulate a network request or delay
-    setTimeout(() => {
-      window.location.href = url;
-    }, 500);
-  };
+const BookingCard: React.FC<BookingCardProps> = ({ isExistingPatient }) => {
+  console.log("isExistingPatient:", isExistingPatient); // Add this line
+
+  // Dynamically set URLs based on isExistingPatient
+  const zoomLink = isExistingPatient
+    ? "https://app.elationemr.com/book/drdianahoppe?appointment_types=759220401930345"
+    : "https://app.elationemr.com/book/drdianahoppe/new-patient-consultation-zoom";
+
+  const phoneLink = isExistingPatient
+    ? "https://app.elationemr.com/book/drdianahoppe?appointment_types=759220521009257"
+    : "https://app.elationemr.com/book/drdianahoppe/new-patient-consultation---phone";
 
   return (
     <CardWrapper
       label="Please select an option"
-      title="Schedule your first appointment"
+      title="Schedule your appointment"
       backButtonLabel="Powered by Das Payments"
-      backButtonHref="https://dasconsultantsusa.com/"
+      backButtonHref="https://daspayusa.com"
     >
       <div className="flex items-center justify-center p-8">
-        <Button
-          onClick={() =>
-            handleClick(
-              "button1",
-              "https://app.elationemr.com/book/drdianahoppe/new-patient-consultation-zoom"
-            )
-          }
-          disabled={loadingState.button1}
-        >
-          {loadingState.button1 ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Loading zoom booking page
-            </>
-          ) : (
-            <Link href="#" onClick={(e) => e.preventDefault()}>
-              Book a zoom appointment
-            </Link>
-          )}
+        <Button asChild>
+          <a href={zoomLink} target="_blank" rel="noopener noreferrer">
+            Book a zoom appointment
+          </a>
         </Button>
       </div>
       <div className="flex items-center justify-center p-8">
-        <Button
-          onClick={() =>
-            handleClick(
-              "button2",
-              "https://app.elationemr.com/book/drdianahoppe/new-patient-consultation---phone"
-            )
-          }
-          disabled={loadingState.button2}
-        >
-          {loadingState.button2 ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Loading phone booking page
-            </>
-          ) : (
-            <Link href="#" onClick={(e) => e.preventDefault()}>
-              Book a phone appointment
-            </Link>
-          )}
+        <Button asChild>
+          <a href={phoneLink} target="_blank" rel="noopener noreferrer">
+            Book a phone appointment
+          </a>
         </Button>
       </div>
     </CardWrapper>
