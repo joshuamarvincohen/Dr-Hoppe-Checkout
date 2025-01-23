@@ -28,10 +28,11 @@ const PaymentPage = () => {
         </div>
       </div>
       <div className="w-full min-w-md max-w-lg col-span-1 p-4">
-        <PaymentForm amount={18000}/>
+        <PaymentForm patientType="existing-patient"amount={18000}/>
       </div>
     </div>
   );
 };
 
 export default PaymentPage;
+

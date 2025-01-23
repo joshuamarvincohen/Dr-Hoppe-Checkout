@@ -22,9 +22,10 @@ import { useRouter } from "next/navigation";
 
 interface PaymentFormProps {
   amount: number;
+  patientType: "new-patient" | "existing-patient" | null;
 }
 
-const PaymentForm = ({ amount }: PaymentFormProps) => {
+const PaymentForm = ({ amount, patientType }: PaymentFormProps) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
@@ -79,7 +80,7 @@ const PaymentForm = ({ amount }: PaymentFormProps) => {
         }
       })
       .then(() => {
-        router.push("/dr-hoppe/thankyou");
+        router.push(`/dr-hoppe/${patientType}/thankyou`);
       })
       .catch((error) => {
         setErrorMessage(error.message);
